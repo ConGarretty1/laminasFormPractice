@@ -57,19 +57,18 @@ class IndexController extends AbstractActionController
     $request = $this->getRequest();
 
     $postData = $request->getPost();
-    $form1 = new Form1();
-    $form1->setData($postData);
+    $this->form1->setData($postData);
 
     // Handle form validation and return user to form1 if validation fails
-    if (!$form1->isValid()) {
+    if (!$this->form1->isValid()) {
       return new ViewModel([
 
         // This could be submit-form1.phtml, but with an error message to help the user?
-        'form1' => $form1,
+        'form1' => $this->form1,
       ]);
     }
 
-    $validatedData = $form1->getData();
+    $validatedData = $this->form1->getData();
     // do something with the valid data
 
     // then redirect to the next form
@@ -90,19 +89,18 @@ class IndexController extends AbstractActionController
     $request = $this->getRequest();
 
     $postData = $request->getPost();
-    $form2 = new Form2();
-    $form2->setData($postData);
+    $this->form2->setData($postData);
 
     // Handle form validation and return user to form2 if validation fails
-    if (!$form2->isValid()) {
+    if (!$this->form2->isValid()) {
       return new ViewModel([
 
         // This could be submit-form2.phtml, but with an error message to help the user?
-        'form2' => $form2,
+        'form2' => $this->form2,
       ]);
     }
 
-    $validatedData = $form2->getData();
+    $validatedData = $this->form2->getData();
     // do something with the valid data
 
     // then redirect to the next form
@@ -122,19 +120,18 @@ class IndexController extends AbstractActionController
     $request = $this->getRequest();
 
     $postData = $request->getPost();
-    $form3 = new Form3();
-    $form3->setData($postData);
+    $this->form3->setData($postData);
 
     // Handle form validation and return user to form3 if validation fails
-    if (!$form3->isValid()) {
+    if (!$this->form3->isValid()) {
       return new ViewModel([
 
         // This could be submit-form3.phtml, but with an error message to help the user?
-        'form3' => $form3,
+        'form3' => $this->form3,
       ]);
     }
 
-    $validatedData = $form3->getData();
+    $validatedData = $this->form3->getData();
     // do something with the valid data
 
     // then redirect to the next form
@@ -154,19 +151,18 @@ class IndexController extends AbstractActionController
     $request = $this->getRequest();
 
     $postData = $request->getPost();
-    $form4 = new Form4();
-    $form4->setData($postData);
+    $this->form4->setData($postData);
 
     // Handle form validation and return user to form4 if validation fails
-    if (!$form4->isValid()) {
+    if (!$this->form4->isValid()) {
       return new ViewModel([
 
         // This could be submit-form4.phtml, but with an error message to help the user?
-        'form4' => $form4,
+        'form4' => $this->form4,
       ]);
     }
 
-    $validatedData = $form4->getData();
+    $validatedData = $this->form4->getData();
     // do something with the valid data
 
     // then redirect to the next form
@@ -186,19 +182,18 @@ class IndexController extends AbstractActionController
     $request = $this->getRequest();
 
     $postData = $request->getPost();
-    $form5 = new Form5();
-    $form5->setData($postData);
+    $this->form5->setData($postData);
 
     // Handle form validation and return user to form5 if validation fails
-    if (!$form5->isValid()) {
+    if (!$this->form5->isValid()) {
       return new ViewModel([
 
         // This could be submit-form5.phtml, but with an error message to help the user?
-        'form5' => $form5,
+        'form5' => $this->form5,
       ]);
     }
 
-    $validatedData = $form5->getData();
+    $validatedData = $this->form5->getData();
     // do something with the valid data
 
     // then redirect to the next form
