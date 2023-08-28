@@ -17,6 +17,28 @@ use Application\Form\Form5;
 
 class IndexController extends AbstractActionController
 {
+  // resitrct form modfications from here
+  private $form1;
+  private $form2;
+  private $form3;
+  private $form4;
+  private $form5;
+
+  // pass forms to the constructor when the controller is created
+  public function __construct(
+    Form1 $form1,
+    Form2 $form2,
+    Form3 $form3,
+    Form4 $form4,
+    Form5 $form5
+  ) {
+    $this->form1 = $form1;
+    $this->form2 = $form2;
+    $this->form3 = $form3;
+    $this->form4 = $form4;
+    $this->form5 = $form5;
+  }
+
   public function indexAction()
   {
     return $this->displayForm1Action();
@@ -24,10 +46,8 @@ class IndexController extends AbstractActionController
 
   public function displayForm1Action()
   {
-    $form = new Form1();
-
     return new ViewModel([
-      'form' => $form,
+      'form' => $this->form1,
     ]);
   }
 
@@ -59,10 +79,8 @@ class IndexController extends AbstractActionController
 
   public function displayForm2Action()
   {
-    $form = new Form2();
-
     return new ViewModel([
-      'form' => $form,
+      'form' => $this->form2,
     ]);
   }
 
@@ -93,10 +111,8 @@ class IndexController extends AbstractActionController
 
   public function displayForm3Action()
   {
-    $form = new Form3();
-
     return new ViewModel([
-      'form' => $form,
+      'form' => $this->form3,
     ]);
   }
 
@@ -127,11 +143,9 @@ class IndexController extends AbstractActionController
 
   public function displayForm4Action()
   {
-    $form = new Form4();
-
     return new ViewModel([
-      'form' => $form,
-    ]);
+      'form' => $this->form4,
+    ]); 
   }
 
   public function submitForm4Action()
@@ -161,10 +175,8 @@ class IndexController extends AbstractActionController
 
   public function displayForm5Action()
   {
-    $form = new Form5();
-
     return new ViewModel([
-      'form' => $form,
+      'form' => $this->form5,
     ]);
   }
 
@@ -192,5 +204,4 @@ class IndexController extends AbstractActionController
     // then redirect to the next form
     return $this->redirect()->toRoute('display-form6');
   }
-
 }

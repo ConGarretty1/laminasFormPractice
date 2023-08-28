@@ -8,10 +8,8 @@ use Laminas\Form\Element\Csrf;
 
 class Form5 extends Form implements InputFilterProviderInterface
 {
-  public function __construct()
+  public function init()
   {
-    parent::__construct('form5');
-
     // Gender
     $this->add([
       'name' => 'gender',

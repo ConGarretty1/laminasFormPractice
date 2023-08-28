@@ -30,7 +30,7 @@ return [
             'action' => 'submitForm1',
           ],
         ],
-      ],      
+      ],
       'display-form2' => [
         'type' => Segment::class,
         'options' => [
@@ -115,7 +115,16 @@ return [
   ],
   'controllers' => [
     'factories' => [
-      Controller\IndexController::class => InvokableFactory::class,
+      Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+    ],
+  ],
+  'service_manager' => [
+    'factories' => [
+      Form\Form1::class => InvokableFactory::class,
+      Form\Form2::class => InvokableFactory::class,
+      Form\Form3::class => InvokableFactory::class,
+      Form\Form4::class => InvokableFactory::class,
+      Form\Form5::class => InvokableFactory::class,
     ],
   ],
   'view_manager' => [

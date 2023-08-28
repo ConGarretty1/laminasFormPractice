@@ -10,10 +10,8 @@ use Laminas\InputFilter\InputFilterProviderInterface;
 
 class Form4 extends Form implements InputFilterProviderInterface
 {
-  public function __construct()
+  public function init()
   {
-    parent::__construct('form4');
-
     $this->add([
       'name' => 'contact_name',
       'type' => 'Text',

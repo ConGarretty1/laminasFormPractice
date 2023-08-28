@@ -2,18 +2,16 @@
 
 namespace Application\Form;
 
-use Laminas\Form\Form;  
+use Laminas\Form\Form;
 use Laminas\Form\Element\Csrf;
-
+use Laminas\InputFilter\InputFilterProviderInterface;
 
 // Applicant detail form
 
-class Form2 extends Form
+class Form2 extends Form implements InputFilterProviderInterface
 {
-  public function __construct()
+  public function init()
   {
-    parent::__construct('form2');
-
     $this->add([
       'name' => 'first_name',
       'type' => 'Text',
@@ -53,7 +51,7 @@ class Form2 extends Form
         'label' => 'city',
       ],
     ]);
-    
+
     $this->add([
       'name' => 'postcode',
       'type' => 'Text',
@@ -80,6 +78,86 @@ class Form2 extends Form
         'id' => 'Submit',
       ],
     ]);
+  }
 
+  public function getInputFilterSpecification()
+  {
+    return [
+      'first_name' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+          [
+            'name' => 'Alnum',
+          ],
+        ],
+      ],
+      'last_name' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+          [
+            'name' => 'Alnum',
+          ],
+        ],
+      ],
+      'email' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+          [
+            'name' => 'EmailAddress',
+          ],
+        ],
+      ],
+      'address' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+        ],
+      ],
+      'city' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+        ],
+      ],
+      'postcode' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+          ],
+        ],
+      ],
+    ];
   }
 }

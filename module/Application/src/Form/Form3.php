@@ -3,14 +3,13 @@
 namespace Application\Form;
 
 use Laminas\Form\Form;
+use Laminas\InputFilter\InputFilterProviderInterface;
 use Laminas\Form\Element\Csrf;
 
-class Form3 extends Form
+class Form3 extends Form implements InputFilterProviderInterface
 {
-  public function __construct()
+  public function init()
   {
-    parent::__construct('form3');
-
     $this->add([
       'name' => 'loan_amount',
       'type' => 'Number',
@@ -62,5 +61,59 @@ class Form3 extends Form
         'id' => 'Submit',
       ],
     ]);
+  }
+
+  public function getInputFilterSpecification()
+  {
+    return [
+      'loan_amount' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'Digits',
+            'options' => [
+              'messages' => [
+                'notDigits' => 'Please enter a valid loan amount',
+              ],
+            ],
+          ],
+        ],
+      ],
+      'loan_duration' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'Digits',
+            'options' => [
+              'messages' => [
+                'notDigits' => 'Please enter a valid loan duration',
+              ],
+            ],
+          ],
+        ],
+      ],
+      'loan_reason' => [
+        'required' => true,
+        'filters' => [
+          ['name' => 'StringTrim'],
+        ],
+        'validators' => [
+          [
+            'name' => 'NotEmpty',
+            'options' => [
+              'messages' => [
+                'isEmpty' => 'Please select a loan reason',
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
   }
 }
